@@ -1,25 +1,58 @@
 { ... }:
 {
-  # Colorscheme
-  colorschemes.catppuccin = {
+  # Colorscheme: tokyonight night style with transparent background
+  colorschemes.tokyonight = {
     enable = true;
     settings = {
-      flavour = "mocha";
-      transparent_background = false;
+      style = "night";
+      transparent = true;
+      terminal_colors = true;
+      styles = {
+        comments.italic = true;
+        keywords.italic = true;
+        sidebars = "dark";
+        floats = "dark";
+      };
     };
   };
 
   plugins = {
-    # Status line
-    lualine.enable = true;
-
-    # Icons
+    # File icons
     web-devicons.enable = true;
 
-    # Git signs in signcolumn
-    gitsigns.enable = true;
+    # Status line
+    lualine = {
+      enable = true;
+      settings = {
+        options = {
+          theme = "tokyonight";
+          icons_enabled = true;
+          section_separators = {
+            left = "";
+            right = "";
+          };
+          component_separators = {
+            left = "";
+            right = "";
+          };
+        };
+      };
+    };
 
-    # Auto close brackets and pairs
-    nvim-autopairs.enable = true;
+    # Tabs / Bufferline
+    bufferline = {
+      enable = true;
+      settings = {
+        options = {
+          mode = "tabs";
+          separator_style = "slant";
+          always_show_bufferline = false;
+          show_buffer_close_icons = false;
+          show_close_icon = false;
+          color_icons = true;
+        };
+      };
+    };
   };
 }
+

@@ -2,27 +2,68 @@
 {
   plugins.telescope = {
     enable = true;
+    settings = {
+      defaults = {
+        prompt_prefix = " ";
+        selection_caret = " ";
+        path_display = [ "smart" ];
+        mappings = {
+          n = {
+            "q" = "close";
+          };
+        };
+      };
+    };
+
+    extensions = {
+      file-browser = {
+        enable = true;
+        settings = {
+          theme = "dropdown";
+          hijack_netrw = true;
+        };
+      };
+    };
+
     keymaps = {
-      "<leader>ff" = {
+      ";f" = {
         action = "find_files";
         options.desc = "Find files";
       };
-      "<leader>fg" = {
+      ";r" = {
         action = "live_grep";
         options.desc = "Live grep";
       };
-      "<leader>fb" = {
+      "\\\\" = {
         action = "buffers";
         options.desc = "Find buffers";
       };
-      "<leader>fh" = {
+      ";t" = {
         action = "help_tags";
         options.desc = "Help tags";
       };
-      "<leader>fr" = {
-        action = "oldfiles";
-        options.desc = "Recent files";
+      ";;" = {
+        action = "resume";
+        options.desc = "Resume telescope";
+      };
+      ";e" = {
+        action = "diagnostics";
+        options.desc = "Diagnostics";
       };
     };
   };
+
+  # Keymap for telescope file browser
+  keymaps = [
+    {
+      mode = "n";
+      key = "sf";
+      action = "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>";
+      options = {
+        silent = true;
+        desc = "Telescope file browser";
+      };
+    }
+  ];
 }
+
