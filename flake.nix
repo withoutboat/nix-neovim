@@ -29,8 +29,14 @@
       # Evaluates standalone nixvim package for a given system
       mkNixvimPackage =
         system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        in
         (nixvim.lib.evalNixvim {
-          inherit system;
+          inherit pkgs;
           modules = [
             ./modules
           ];
@@ -39,8 +45,14 @@
       # Evaluates nixvim test derivation for flake check
       mkNixvimTest =
         system:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        in
         (nixvim.lib.evalNixvim {
-          inherit system;
+          inherit pkgs;
           modules = [
             ./modules
           ];
@@ -66,6 +78,7 @@
             imports = [
               nixvim.homeModules.default
               {
+                nixpkgs.config.allowUnfree = true;
                 programs.nixvim = {
                   enable = lib.mkDefault true;
                   defaultEditor = lib.mkDefault true;
@@ -89,6 +102,7 @@
             imports = [
               nixvim.nixosModules.default
               {
+                nixpkgs.config.allowUnfree = true;
                 programs.nixvim = {
                   enable = lib.mkDefault true;
                   defaultEditor = lib.mkDefault true;
