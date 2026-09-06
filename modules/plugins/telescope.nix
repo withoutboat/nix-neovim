@@ -2,18 +2,6 @@
 {
   plugins.telescope = {
     enable = true;
-    settings = {
-      defaults = {
-        prompt_prefix = " ";
-        selection_caret = " ";
-        path_display = [ "smart" ];
-        mappings = {
-          n = {
-            "q" = "close";
-          };
-        };
-      };
-    };
 
     extensions = {
       file-browser = {
@@ -66,4 +54,5 @@
     }
   ];
 }
+
 

@@ -1,74 +1,109 @@
 # nix-neovim
 
-Personal Neovim configuration built on [NixVim](https://github.com/nix-community/nixvim), ported and modernized from legacy Lua configuration.
+A lightweight, reproducible Neovim configuration built on [NixVim](https://github.com/nix-community/nixvim).
 
-## Features & Modules
+This repository focuses purely on editor mechanics, language servers (LSP), formatting, search, and core keybindings. UI theming, statuslines, and tablines are omitted by design so they can be managed globally in system or home configurations.
 
-- **Core & Options** (`modules/options.nix`):
-  - 2-space indentation (`tabstop`, `shiftwidth`, `autoindent`, `smartindent`).
-  - Relative line numbers, cursorline, 80-character colorcolumn.
-  - Smart search (`ignorecase`, `smartcase`, `hlsearch`, `inccommand = "split"`).
-  - System clipboard (`unnamedplus`), persistent undo (`undofile`), scrolloff = 10.
-  - Automatic `nopaste` on `InsertLeave`.
+---
 
-- **Keymaps** (`modules/keymaps.nix`):
-  - Insert mode exit: `jk` and `kj` → `<Esc>`.
-  - Splits: `ss` (horizontal) and `sv` (vertical).
-  - Window navigation: `<Space>` to cycle windows; `sh`, `sj`, `sk`, `sl` (and `<C-h/j/k/l>`) to navigate splits.
-  - Window resizing: `<C-w><left/right/up/down>`.
-  - Tabs: `te` (`:tabedit`), `tn` (`:tabNext`).
-  - Buffer cycling: `<Tab>` / `<S-Tab>`.
-  - Quick actions: `x` (blackhole delete), `dw` (delete word backward), `p` in visual mode (paste without replacing register), `<C-a>` (select all), `<leader>x` (`chmod +x`), `<C-f>` (`tmux-sessionizer`).
+## Keybindings
 
-- **UI & Theme** (`modules/plugins/ui.nix`):
-  - [tokyonight.nvim](https://github.com/folke/tokyonight.nvim) - Night style with transparent background.
-  - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - TokyoNight statusline with powerline glyphs and diagnostics.
-  - [bufferline.nvim](https://github.com/akinsho/nvim-bufferline.lua) - Tabline with slant separators.
-  - [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) - File icons.
+Leader key is mapped to `<Space>`.
 
-- **Fuzzy Finder & Navigation** (`modules/plugins/telescope.nix`):
-  - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) with custom prompts (` `, ` `).
-  - [telescope-file-browser.nvim](https://github.com/nvim-telescope/telescope-file-browser.nvim) on `sf`.
-  - Keymaps: `;f` (find files), `;r` (live grep), `\\\\` (buffers), `;t` (help tags), `;;` (resume), `;e` (diagnostics).
+### 1. General & Editing
 
-- **Syntax & Language Support** (`modules/plugins/treesitter.nix`):
-  - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Syntax highlighting, indentation, and folding.
-  - [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) - Auto close and rename HTML/JSX tags.
-  - [nvim-autopairs](https://github.com/windwp/nvim-autopairs) - Auto close brackets and quotes.
+| Key | Mode | Description |
+| --- | --- | --- |
+| `jk` or `kj` | Insert | Exit insert mode to normal mode |
+| `<Esc>` | Normal | Clear search highlight (`:nohlsearch`) |
+| `<leader>w` | Normal | Save buffer (`:w`) |
+| `<leader>q` | Normal | Quit window (`:q`) |
+| `x` | Normal | Delete character without overwriting default register (`"_x`) |
+| `dw` | Normal | Delete word backward without overwriting register |
+| `p` | Visual | Paste without replacing register contents |
+| `<C-a>` | Normal | Select all text (`gg<S-v>G`) |
+| `+` / `-` | Normal | Increment / decrement number |
+| `J` / `K` | Visual | Move selected lines down / up |
+| `<` / `>` | Visual | Indent left / right (retains selection) |
+| `<leader>x` | Normal | Make current file executable (`chmod +x %`) |
+| `<C-f>` | Normal | Open `tmux-sessionizer` |
 
-- **LSP** (`modules/plugins/lsp.nix`):
-  - Pre-configured language servers:
-    - TypeScript / JavaScript (`ts_ls`)
-    - ESLint (`eslint`)
-    - Go (`gopls`)
-    - Rust (`rust_analyzer`)
-    - Tailwind CSS (`tailwindcss`)
-    - Prisma (`prismals`)
-    - Lua (`lua_ls`)
-    - Terraform (`terraformls`)
-  - Keymaps: `gd` (definition), `gD` (declaration), `gi` (implementation), `gr` (references), `K` (hover), `<leader>rn` / `<F2>` (rename), `<leader>ca` (code action), `gl` (float diagnostic), `[d` / `]d` (next/prev diagnostic).
-  - Diagnostic symbols in gutter (` `, ` `, ` `, ` `).
+### 2. Windows, Splits & Buffers
 
-- **Completion & AI** (`modules/plugins/cmp.nix`):
-  - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) with sources: Copilot, LSP, buffers, path, LuaSnip.
-  - [copilot.lua](https://github.com/zbirenbaum/copilot.lua) + [copilot-cmp](https://github.com/zbirenbaum/copilot-cmp) integration.
-  - [lspkind.nvim](https://github.com/onsails/lspkind.nvim) pictograms.
-  - `<C-j>` / `<C-k>` for completion item selection.
+| Key | Mode | Description |
+| --- | --- | --- |
+| `ss` | Normal | Split window horizontally |
+| `sv` | Normal | Split window vertically |
+| `<Space>` | Normal | Cycle focus to next window (`<C-w>w`) |
+| `sh` / `sj` / `sk` / `sl` | Normal | Move to left / lower / upper / right window |
+| `<C-h>` / `<C-j>` / `<C-k>` / `<C-l>` | Normal | Move to left / lower / upper / right window |
+| `<C-w><left/right/up/down>` | Normal | Resize window split |
+| `te` | Normal | New tab (`:tabedit`) |
+| `tn` | Normal | Next tab (`:tabNext`) |
+| `[b` / `]b` | Normal | Previous / next buffer |
 
-- **Git** (`modules/plugins/git.nix`):
-  - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) for gutter change indicators and blame (`<leader>gb`, `<leader>gd`).
-  - [git-conflict.nvim](https://github.com/akinsho/git-conflict.nvim) for merge conflict resolution.
+### 3. LSP (Language Server Protocol)
 
-- **Tools** (`modules/plugins/tools.nix`):
-  - [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim) - Floating terminal toggled via `<C-\>`.
-  - [trouble.nvim](https://github.com/folke/trouble.nvim) - Diagnostic and reference explorer (`;tt`, `;tw`, `;tq`, `;tl`, `gR`).
-  - [which-key.nvim](https://github.com/folke/which-key.nvim) - Keybinding helper.
+| Key | Mode | Description |
+| --- | --- | --- |
+| `gd` | Normal | Go to definition |
+| `gD` | Normal | Go to declaration |
+| `gi` | Normal | Go to implementation |
+| `gr` | Normal | Find references |
+| `K` | Normal | Hover documentation |
+| `<leader>rn` / `<F2>` | Normal | Rename symbol |
+| `<leader>ca` | Normal | Code actions |
+| `gl` | Normal | Open line diagnostics floating window |
+| `[d` / `]d` | Normal | Jump to previous / next diagnostic |
+| `<leader>q` | Normal | Add diagnostics to location list |
 
-## Usage
+Pre-configured servers:
+- **TypeScript / JavaScript**: `ts_ls`, `eslint`
+- **Go**: `gopls`
+- **Rust**: `rust_analyzer`
+- **Tailwind CSS**: `tailwindcss`
+- **Prisma**: `prismals`
+- **Lua**: `lua_ls`
+- **Terraform**: `terraformls`
 
-### 1. Integration into `withoutboat/nix-home` (Home Manager)
+### 4. Code Formatting (`conform.nvim`)
 
-Add `nix-neovim` to your `flake.nix` inputs:
+Formatting is powered by `conform.nvim` with automatic fallback to LSP.
+
+- **Format on save**: Enabled by default with 1000ms timeout.
+- Supported formatters: `prettierd`/`prettier` (JS/TS/JSON/HTML/CSS), `stylua` (Lua), `nixfmt` (Nix), `rustfmt` (Rust), `gofmt`/`goimports` (Go), `trim_whitespace`.
+- Manual trigger: `<leader>cf` — Format current buffer.
+
+### 5. Search & Files (`telescope.nvim`)
+
+| Key | Mode | Description |
+| --- | --- | --- |
+| `;f` | Normal | Find files |
+| `;r` | Normal | Live grep |
+| `\\\\` | Normal | Search open buffers |
+| `;t` | Normal | Search help tags |
+| `;;` | Normal | Resume last Telescope session |
+| `;e` | Normal | List diagnostics |
+| `sf` | Normal | Open file browser in current buffer directory |
+
+### 6. Tools, Terminal & Git
+
+| Key | Mode | Description |
+| --- | --- | --- |
+| `<C-\>` | Normal / Term | Toggle floating terminal (`toggleterm`) |
+| `;tt` | Normal | Toggle `trouble.nvim` diagnostics panel |
+| `;tw` | Normal | Toggle buffer diagnostics list |
+| `gR` | Normal | Toggle LSP references in Trouble |
+| `<leader>gb` | Normal | Git blame line (`gitsigns`) |
+| `<leader>gd` | Normal | Git diff view (`gitsigns`) |
+
+---
+
+## Installation & Integration
+
+### With Home Manager (`withoutboat/nix-home`)
+
+Add this repository to your `flake.nix`:
 
 ```nix
 {
@@ -95,54 +130,62 @@ Add `nix-neovim` to your `flake.nix` inputs:
 }
 ```
 
-This enables `programs.nixvim` with default editor set to Neovim.
+This enables `programs.nixvim` and marks Neovim as the default editor (`EDITOR=nvim`).
 
-#### Customizing in Home Manager
+### Extending in Downstream Configurations
 
-You can easily override or add settings in downstream configurations:
+You can add your global UI themes, extra plugins, or override options directly in your Home Manager configuration:
 
 ```nix
 {
   programs.nixvim = {
+    # Add your global colorscheme here
+    colorschemes.catppuccin = {
+      enable = true;
+      settings.flavour = "mocha";
+    };
+
+    # Or customize options
     opts.relativenumber = false;
   };
 }
 ```
 
-### 2. Standalone run or build
+### Standalone Usage
 
-Run directly without installing:
+Run Neovim directly without installing:
 
 ```bash
 nix run github:withoutboat/nix-neovim
 ```
 
-Or build the package:
+Or build the standalone derivation:
 
 ```bash
 nix build github:withoutboat/nix-neovim
 ./result/bin/nvim
 ```
 
-## Repository Structure
+---
+
+## Module Layout
 
 ```
 .
 ├── flake.nix              # Flake definition & module exports
 ├── modules/
-│   ├── default.nix        # Main NixVim configuration module
-│   ├── options.nix        # Basic Neovim options, autocommands & globals
-│   ├── keymaps.nix        # Custom keymaps (splits, buffers, navigation)
+│   ├── default.nix        # Base configuration aggregator
+│   ├── options.nix        # Core editor options & autocommands
+│   ├── keymaps.nix        # Primary keybindings
 │   └── plugins/
 │       ├── default.nix    # Plugins aggregator
-│       ├── ui.nix         # Tokyonight, lualine, bufferline, devicons
-│       ├── telescope.nix  # Telescope & telescope-file-browser
-│       ├── treesitter.nix # Treesitter, ts-autotag, nvim-autopairs
-│       ├── lsp.nix        # Language servers, LSP keymaps & diagnostics
-│       ├── cmp.nix        # nvim-cmp, copilot, luasnip, lspkind
-│       ├── git.nix        # gitsigns, git-conflict
-│       ├── tools.nix      # toggleterm, trouble
+│       ├── cmp.nix        # nvim-cmp & GitHub Copilot
+│       ├── conform.nix    # conform.nvim formatter
+│       ├── git.nix        # gitsigns & git-conflict
+│       ├── lsp.nix        # Language servers & LSP keymaps
+│       ├── telescope.nix  # telescope & file-browser
+│       ├── tools.nix      # toggleterm & trouble
+│       ├── treesitter.nix # treesitter, autopairs & autotag
 │       └── which-key.nix  # which-key
 └── README.md
 ```
-

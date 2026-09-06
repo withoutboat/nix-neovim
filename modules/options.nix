@@ -32,22 +32,13 @@
     incsearch = true;
     inccommand = "split";
 
-    # UI & Appearance
-    title = true;
+    # Appearance & Layout
     termguicolors = true;
     cursorline = true;
-    colorcolumn = "80";
     signcolumn = "yes";
-    showtabline = 2;
-    cmdheight = 1;
-    laststatus = 2;
     scrolloff = 10;
     sidescrolloff = 8;
     wrap = false;
-    winblend = 0;
-    pumblend = 5;
-    wildoptions = "pum";
-    background = "dark";
 
     # Behavior
     mouse = "a";

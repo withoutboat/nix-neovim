@@ -145,18 +145,18 @@
       };
     }
 
-    # Bufferline cycle
+    # Buffer navigation
     {
       mode = "n";
-      key = "<Tab>";
-      action = "<Cmd>BufferLineCycleNext<CR>";
-      options.desc = "Next buffer";
+      key = "[b";
+      action = "<cmd>bprevious<CR>";
+      options.desc = "Previous buffer";
     }
     {
       mode = "n";
-      key = "<S-Tab>";
-      action = "<Cmd>BufferLineCyclePrev<CR>";
-      options.desc = "Previous buffer";
+      key = "]b";
+      action = "<cmd>bnext<CR>";
+      options.desc = "Next buffer";
     }
 
     # Text editing helpers

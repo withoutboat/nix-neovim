@@ -32,15 +32,6 @@
     # Snippet engine
     luasnip.enable = true;
 
-    # VSCode-like pictograms
-    lspkind = {
-      enable = true;
-      settings = {
-        mode = "symbol";
-        maxwidth = 50;
-      };
-    };
-
     # GitHub Copilot integration
     copilot-lua = {
       enable = true;
