@@ -1,0 +1,7 @@
+result
+result-*
+.direnv
+.envrc.override
+*.swp
+*.swo
+.DS_Store
