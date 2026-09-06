@@ -32,7 +32,6 @@
         let
           pkgs = import nixpkgs {
             inherit system;
-            config.allowUnfree = true;
           };
         in
         (nixvim.lib.evalNixvim {
@@ -48,7 +47,6 @@
         let
           pkgs = import nixpkgs {
             inherit system;
-            config.allowUnfree = true;
           };
         in
         (nixvim.lib.evalNixvim {
