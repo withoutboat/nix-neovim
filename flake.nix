@@ -78,7 +78,6 @@
             imports = [
               nixvim.homeModules.default
               {
-                nixpkgs.config.allowUnfree = true;
                 programs.nixvim = {
                   enable = lib.mkDefault true;
                   defaultEditor = lib.mkDefault true;
@@ -102,7 +101,6 @@
             imports = [
               nixvim.nixosModules.default
               {
-                nixpkgs.config.allowUnfree = true;
                 programs.nixvim = {
                   enable = lib.mkDefault true;
                   defaultEditor = lib.mkDefault true;
