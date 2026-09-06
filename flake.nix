@@ -32,6 +32,7 @@
         let
           pkgs = import nixpkgs {
             inherit system;
+            config.allowUnfree = true;
           };
         in
         (nixvim.lib.evalNixvim {
@@ -47,6 +48,7 @@
         let
           pkgs = import nixpkgs {
             inherit system;
+            config.allowUnfree = true;
           };
         in
         (nixvim.lib.evalNixvim {
@@ -79,6 +81,7 @@
                 programs.nixvim = {
                   enable = lib.mkDefault true;
                   defaultEditor = lib.mkDefault true;
+                  nixpkgs.useGlobalPackages = lib.mkDefault true;
                   imports = [
                     ./modules
                   ];
@@ -102,6 +105,7 @@
                 programs.nixvim = {
                   enable = lib.mkDefault true;
                   defaultEditor = lib.mkDefault true;
+                  nixpkgs.useGlobalPackages = lib.mkDefault true;
                   imports = [
                     ./modules
                   ];
