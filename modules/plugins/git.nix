@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, lib, ... }:
 {
   plugins = {
     # Git signs in signcolumn
@@ -12,6 +12,11 @@
     # Conflict marker visualization & resolution
     git-conflict = {
       enable = true;
+      package = pkgs.vimPlugins.git-conflict-nvim.overrideAttrs (old: {
+        meta = (old.meta or { }) // {
+          license = lib.licenses.mit;
+        };
+      });
       settings = {
         default_mappings = true;
         disable_diagnostics = false;
