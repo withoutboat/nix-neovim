@@ -116,6 +116,21 @@ GitHub Copilot is configured with inline ghost text suggestions, `nvim-cmp` drop
 | `<leader>cq` | Normal | Reset chat history |
 | `<leader>cp` | Normal / Visual | Open CopilotChat prompt picker |
 
+#### Authentication
+
+GitHub Copilot automatically detects credentials placed at `~/.config/github-copilot/hosts.json` (e.g. provisioned declaratively via `sops-nix`):
+
+```json
+{
+  "github.com": {
+    "user": "your-username",
+    "oauth_token": "ghu_xxxxxxxxxxxxxxxxxxxx"
+  }
+}
+```
+
+Alternatively, authenticate interactively by running `:Copilot auth`.
+
 ### 7. Tools, Terminal & Git
 
 | Key | Mode | Description |
