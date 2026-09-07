@@ -3,11 +3,24 @@
   plugins.telescope = {
     enable = true;
 
+    settings = {
+      defaults = {
+        layout_strategy = "flex";
+        layout_config = {
+          horizontal = {
+            preview_width = 0.55;
+          };
+          vertical = {
+            preview_height = 0.5;
+          };
+        };
+      };
+    };
+
     extensions = {
       file-browser = {
         enable = true;
         settings = {
-          theme = "dropdown";
           hijack_netrw = true;
         };
       };

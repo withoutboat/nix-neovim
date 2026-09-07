@@ -40,6 +40,11 @@
     sidescrolloff = 8;
     wrap = false;
 
+    # Folding
+    foldlevel = 99;
+    foldlevelstart = 99;
+    foldenable = true;
+
     # Behavior
     mouse = "a";
     clipboard = "unnamedplus";
