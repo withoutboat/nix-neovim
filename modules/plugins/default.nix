@@ -9,6 +9,7 @@
     ./cmp.nix
     ./git.nix
     ./tools.nix
+    ./copilot.nix
   ];
 }
 

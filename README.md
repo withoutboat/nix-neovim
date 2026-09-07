@@ -86,7 +86,37 @@ Formatting is powered by `conform.nvim` with automatic fallback to LSP.
 | `;e` | Normal | List diagnostics |
 | `sf` | Normal | Open file browser in current buffer directory |
 
-### 6. Tools, Terminal & Git
+### 6. GitHub Copilot & CopilotChat
+
+GitHub Copilot is configured with inline ghost text suggestions, `nvim-cmp` dropdown integration, and interactive `CopilotChat`.
+
+#### Inline Suggestions (Ghost Text)
+
+| Key | Mode | Description |
+| --- | --- | --- |
+| `<Tab>` | Insert | Accept suggestion (falls back to normal Tab if none visible) |
+| `<M-l>` | Insert | Accept suggestion |
+| `<M-w>` | Insert | Accept next word of suggestion |
+| `<M-j>` | Insert | Accept next line of suggestion |
+| `<M-]>` | Insert | Cycle to next suggestion |
+| `<M-[>` | Insert | Cycle to previous suggestion |
+| `<C-]>` | Insert | Dismiss current suggestion |
+
+#### CopilotChat
+
+| Key | Mode | Description |
+| --- | --- | --- |
+| `<leader>cc` | Normal / Visual | Toggle CopilotChat window |
+| `<leader>ce` | Normal / Visual | Explain selected code |
+| `<leader>cr` | Normal / Visual | Review selected code |
+| `<leader>cx` | Normal / Visual | Fix bug in selected code |
+| `<leader>ct` | Normal / Visual | Generate tests for selected code |
+| `<leader>cd` | Normal / Visual | Generate documentation for selected code |
+| `<leader>cm` | Normal | Generate commit message for changes |
+| `<leader>cq` | Normal | Reset chat history |
+| `<leader>cp` | Normal / Visual | Open CopilotChat prompt picker |
+
+### 7. Tools, Terminal & Git
 
 | Key | Mode | Description |
 | --- | --- | --- |
@@ -179,8 +209,9 @@ nix build github:withoutboat/nix-neovim
 │   ├── keymaps.nix        # Primary keybindings
 │   └── plugins/
 │       ├── default.nix    # Plugins aggregator
-│       ├── cmp.nix        # nvim-cmp & GitHub Copilot
+│       ├── cmp.nix        # nvim-cmp completion engine
 │       ├── conform.nix    # conform.nvim formatter
+│       ├── copilot.nix    # GitHub Copilot (suggestions & CopilotChat)
 │       ├── git.nix        # gitsigns & git-conflict
 │       ├── lsp.nix        # Language servers & LSP keymaps
 │       ├── telescope.nix  # telescope & file-browser

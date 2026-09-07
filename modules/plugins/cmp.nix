@@ -31,16 +31,6 @@
 
     # Snippet engine
     luasnip.enable = true;
-
-    # GitHub Copilot integration
-    copilot-lua = {
-      enable = true;
-      settings = {
-        suggestion.enabled = false;
-        panel.enabled = false;
-      };
-    };
-    copilot-cmp.enable = true;
   };
 
   opts = {
