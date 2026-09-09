@@ -25,9 +25,6 @@
       };
     };
 
-    # GitHub Copilot completion source for nvim-cmp
-    copilot-cmp.enable = true;
-
     # GitHub Copilot Chat
     copilot-chat = {
       enable = true;

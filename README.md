@@ -88,7 +88,7 @@ Formatting is powered by `conform.nvim` with automatic fallback to LSP.
 
 ### 6. GitHub Copilot & CopilotChat
 
-GitHub Copilot is configured with inline ghost text suggestions, `nvim-cmp` dropdown integration, and interactive `CopilotChat`.
+GitHub Copilot is configured with inline ghost text suggestions and interactive `CopilotChat`.
 
 #### Inline Suggestions (Ghost Text)
 
