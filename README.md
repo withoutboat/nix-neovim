@@ -65,6 +65,7 @@ Pre-configured servers:
 - **Prisma**: `prismals`
 - **Lua**: `lua_ls`
 - **Terraform**: `terraformls`
+- **Nix**: `nixd`
 
 ### 4. Code Formatting (`conform.nvim`)
 

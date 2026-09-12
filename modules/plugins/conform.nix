@@ -1,5 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  extraPackages = [
+    pkgs.nixfmt
+  ];
+
   plugins.conform-nvim = {
     enable = true;
     settings = {
