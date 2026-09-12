@@ -53,6 +53,19 @@
 
       # Terraform
       terraformls.enable = true;
+
+      # Nix
+      nixd = {
+        enable = true;
+        settings = {
+          formatting = {
+            command = [ "nixfmt" ];
+          };
+          nixpkgs = {
+            expr = "import <nixpkgs> { }";
+          };
+        };
+      };
     };
 
     keymaps = {
