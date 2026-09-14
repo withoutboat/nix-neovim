@@ -66,13 +66,14 @@ Pre-configured servers:
 - **Lua**: `lua_ls`
 - **Terraform**: `terraformls`
 - **Nix**: `nixd`
+- **YAML**: `yamlls` (with SchemaStore catalog and Cerbos policy/test suite schemas)
 
 ### 4. Code Formatting (`conform.nvim`)
 
 Formatting is powered by `conform.nvim` with automatic fallback to LSP.
 
 - **Format on save**: Enabled by default with 1000ms timeout.
-- Supported formatters: `prettierd`/`prettier` (JS/TS/JSON/HTML/CSS), `stylua` (Lua), `nixfmt` (Nix), `rustfmt` (Rust), `gofmt`/`goimports` (Go), `trim_whitespace`.
+- Supported formatters: `prettierd`/`prettier` (JS/TS/JSON/HTML/CSS), `yamlfmt` (YAML), `stylua` (Lua), `nixfmt` (Nix), `rustfmt` (Rust), `gofmt`/`goimports` (Go), `trim_whitespace`.
 - Manual trigger: `<leader>cf` — Format current buffer.
 
 ### 5. Search & Files (`telescope.nvim`)

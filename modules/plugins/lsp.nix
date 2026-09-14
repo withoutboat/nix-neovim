@@ -66,6 +66,53 @@
           };
         };
       };
+
+      # YAML
+      yamlls = {
+        enable = true;
+        settings = {
+          schemaStore = {
+            enable = true;
+            url = "https://www.schemastore.org/api/json/catalog.json";
+          };
+          schemas = {
+            # Cerbos policy definitions & test suites
+            "https://api.cerbos.dev/latest/cerbos/policy/v1/Policy.schema.json" = [
+              "/cerbos/*"
+              "cerbos/*"
+              "*cerbos*/**/*.yaml"
+              "*cerbos*/**/*.yml"
+              "*.cerbos.yaml"
+              "*.cerbos.yml"
+            ];
+            "https://api.cerbos.dev/latest/cerbos/policy/v1/TestSuite.schema.json" = [
+              "/cerbos/**/*_test.yaml"
+              "/cerbos/**/*_test.yml"
+              "*cerbos*/**/*_test.yaml"
+              "*cerbos*/**/*_test.yml"
+            ];
+            "https://api.cerbos.dev/latest/cerbos/policy/v1/TestFixture/Resources.schema.json" = [
+              "/cerbos/**/testdata/resources.yaml"
+              "/cerbos/**/testdata/resources.yml"
+              "*cerbos*/**/testdata/resources.yaml"
+              "*cerbos*/**/testdata/resources.yml"
+            ];
+            "https://api.cerbos.dev/latest/cerbos/policy/v1/TestFixture/Principals.schema.json" = [
+              "/cerbos/**/testdata/principals.yaml"
+              "/cerbos/**/testdata/principals.yml"
+              "*cerbos*/**/testdata/principals.yaml"
+              "*cerbos*/**/testdata/principals.yml"
+            ];
+            "https://api.cerbos.dev/latest/cerbos/policy/v1/TestFixture/AuxData.schema.json" = [
+              "/cerbos/**/testdata/auxdata.yaml"
+              "/cerbos/**/testdata/auxdata.yml"
+              "*cerbos*/**/testdata/auxdata.yaml"
+              "*cerbos*/**/testdata/auxdata.yml"
+            ];
+          };
+          validate = true;
+        };
+      };
     };
 
     keymaps = {

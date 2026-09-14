@@ -2,6 +2,7 @@
 {
   extraPackages = [
     pkgs.nixfmt
+    pkgs.yamlfmt
   ];
 
   plugins.conform-nvim = {
@@ -47,6 +48,7 @@
           "gofmt"
           "goimports"
         ];
+        yaml = [ "yamlfmt" ];
         "*" = [ "trim_whitespace" ];
       };
     };
