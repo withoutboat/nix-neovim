@@ -66,7 +66,7 @@ Pre-configured servers:
 - **Lua**: `lua_ls`
 - **Terraform**: `terraformls`
 - **Nix**: `nixd`
-- **YAML**: `yamlls`
+- **YAML**: `yamlls` (with SchemaStore catalog and Cerbos policy/test suite schemas)
 
 ### 4. Code Formatting (`conform.nvim`)
 
