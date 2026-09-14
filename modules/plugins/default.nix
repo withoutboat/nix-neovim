@@ -10,6 +10,7 @@
     ./git.nix
     ./tools.nix
     ./copilot.nix
+    ./neo-tree.nix
   ];
 }
 
