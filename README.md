@@ -80,13 +80,13 @@ Formatting is powered by `conform.nvim` with automatic fallback to LSP.
 
 | Key | Mode | Description |
 | --- | --- | --- |
-| `;f` | Normal | Find files |
+| `;f` | Normal | Find files (including hidden dotfiles/folders and `.git`) |
 | `;r` | Normal | Live grep |
 | `\\\\` | Normal | Search open buffers |
 | `;t` | Normal | Search help tags |
 | `;;` | Normal | Resume last Telescope session |
 | `;e` | Normal | List diagnostics |
-| `sf` | Normal | Open file browser in current buffer directory |
+| `sf` | Normal | Open file browser in current buffer directory (including hidden files/folders and `.git`) |
 
 ### 6. GitHub Copilot & CopilotChat
 
