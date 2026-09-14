@@ -130,7 +130,12 @@
       diagnostic = {
         "[d" = "goto_prev";
         "]d" = "goto_next";
+        "<leader>dj" = "goto_next";
+        "<leader>dk" = "goto_prev";
+        "<leader>dn" = "goto_next";
+        "<leader>dp" = "goto_prev";
         "gl" = "open_float";
+        "<leader>dl" = "open_float";
         "<leader>q" = "setloclist";
       };
     };

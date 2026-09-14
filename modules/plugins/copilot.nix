@@ -14,8 +14,8 @@
             accept = "<M-l>";
             accept_word = "<M-w>";
             accept_line = "<M-j>";
-            next = "<M-]>";
-            prev = "<M-[>";
+            next = "<M-n>";
+            prev = "<M-p>";
             dismiss = "<C-]>";
           };
         };

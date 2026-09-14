@@ -158,6 +158,44 @@
       action = "<cmd>bnext<CR>";
       options.desc = "Next buffer";
     }
+    {
+      mode = "n";
+      key = "H";
+      action = "<cmd>bprevious<CR>";
+      options.desc = "Previous buffer";
+    }
+    {
+      mode = "n";
+      key = "L";
+      action = "<cmd>bnext<CR>";
+      options.desc = "Next buffer";
+    }
+
+    # Code block / paragraph navigation (ergonomic for compact & split keyboards)
+    {
+      mode = [
+        "n"
+        "v"
+      ];
+      key = "<M-j>";
+      action = "}";
+      options = {
+        silent = true;
+        desc = "Next code block / paragraph";
+      };
+    }
+    {
+      mode = [
+        "n"
+        "v"
+      ];
+      key = "<M-k>";
+      action = "{";
+      options = {
+        silent = true;
+        desc = "Previous code block / paragraph";
+      };
+    }
 
     # Text editing helpers
     {
