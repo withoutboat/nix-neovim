@@ -9,6 +9,10 @@
           group = "Copilot & Code";
         }
         {
+          __unkeyed-1 = "<leader>d";
+          group = "Diagnostics";
+        }
+        {
           __unkeyed-1 = "<leader>e";
           desc = "Toggle Neo-tree";
         }

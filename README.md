@@ -40,7 +40,8 @@ Leader key is mapped to `<Space>`.
 | `<C-w><left/right/up/down>` | Normal | Resize window split |
 | `te` | Normal | New tab (`:tabedit`) |
 | `tn` | Normal | Next tab (`:tabNext`) |
-| `[b` / `]b` | Normal | Previous / next buffer |
+| `[b` / `]b` or `H` / `L` | Normal | Previous / next buffer |
+| `<M-j>` / `<M-k>` | Normal / Visual | Jump to next / previous code block or paragraph (`}` / `{`) |
 
 ### 3. LSP (Language Server Protocol)
 
@@ -53,8 +54,8 @@ Leader key is mapped to `<Space>`.
 | `K` | Normal | Hover documentation |
 | `<leader>rn` / `<F2>` | Normal | Rename symbol |
 | `<leader>ca` | Normal | Code actions |
-| `gl` | Normal | Open line diagnostics floating window |
-| `[d` / `]d` | Normal | Jump to previous / next diagnostic |
+| `gl` or `<leader>dl` | Normal | Open line diagnostics floating window |
+| `[d` / `]d` or `<leader>dk` / `<leader>dj` | Normal | Jump to previous / next diagnostic (`<leader>dp` / `<leader>dn`) |
 | `<leader>q` | Normal | Add diagnostics to location list |
 
 Pre-configured servers:
@@ -102,8 +103,8 @@ GitHub Copilot is configured with inline ghost text suggestions and interactive 
 | `<M-l>` | Insert | Accept suggestion |
 | `<M-w>` | Insert | Accept next word of suggestion |
 | `<M-j>` | Insert | Accept next line of suggestion |
-| `<M-]>` | Insert | Cycle to next suggestion |
-| `<M-[>` | Insert | Cycle to previous suggestion |
+| `<M-n>` | Insert | Cycle to next suggestion |
+| `<M-p>` | Insert | Cycle to previous suggestion |
 | `<C-]>` | Insert | Dismiss current suggestion |
 
 #### CopilotChat
