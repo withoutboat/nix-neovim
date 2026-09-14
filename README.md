@@ -76,10 +76,12 @@ Formatting is powered by `conform.nvim` with automatic fallback to LSP.
 - Supported formatters: `prettierd`/`prettier` (JS/TS/JSON/HTML/CSS), `yamlfmt` (YAML), `stylua` (Lua), `nixfmt` (Nix), `rustfmt` (Rust), `gofmt`/`goimports` (Go), `trim_whitespace`.
 - Manual trigger: `<leader>cf` — Format current buffer.
 
-### 5. Search & Files (`telescope.nvim`)
+### 5. Search & Files (`telescope.nvim` & `neo-tree.nvim`)
 
 | Key | Mode | Description |
 | --- | --- | --- |
+| `<leader>e` | Normal | Toggle Neo-tree file explorer |
+| `<leader>o` | Normal | Focus Neo-tree file explorer |
 | `;f` | Normal | Find files (including hidden dotfiles/folders and `.git`) |
 | `;r` | Normal | Live grep |
 | `\\\\` | Normal | Search open buffers |
