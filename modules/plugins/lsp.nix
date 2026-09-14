@@ -66,6 +66,19 @@
           };
         };
       };
+
+      # YAML
+      yamlls = {
+        enable = true;
+        settings = {
+          schemaStore = {
+            enable = true;
+            url = "https://www.schemastore.org/api/json/catalog.json";
+          };
+          schemas = { };
+          validate = true;
+        };
+      };
     };
 
     keymaps = {

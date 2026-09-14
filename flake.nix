@@ -36,8 +36,8 @@
           };
         in
         (nixvim.lib.evalNixvim {
-          inherit pkgs;
           modules = [
+            { nixpkgs.pkgs = pkgs; }
             ./modules
           ];
         }).config.build.package;
@@ -52,8 +52,8 @@
           };
         in
         (nixvim.lib.evalNixvim {
-          inherit pkgs;
           modules = [
+            { nixpkgs.pkgs = pkgs; }
             ./modules
           ];
         }).config.build.test;
