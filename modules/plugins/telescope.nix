@@ -15,6 +15,13 @@
           };
         };
       };
+
+      pickers = {
+        find_files = {
+          hidden = true;
+          no_ignore = true;
+        };
+      };
     };
 
     extensions = {
@@ -22,6 +29,8 @@
         enable = true;
         settings = {
           hijack_netrw = true;
+          hidden = true;
+          respect_gitignore = false;
         };
       };
     };
@@ -29,7 +38,7 @@
     keymaps = {
       ";f" = {
         action = "find_files";
-        options.desc = "Find files";
+        options.desc = "Find files (including hidden)";
       };
       ";r" = {
         action = "live_grep";
@@ -59,10 +68,10 @@
     {
       mode = "n";
       key = "sf";
-      action = "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>";
+      action = "<cmd>Telescope file_browser path=%:p:h select_buffer=true hidden=true respect_gitignore=false<CR>";
       options = {
         silent = true;
-        desc = "Telescope file browser";
+        desc = "Telescope file browser (including hidden)";
       };
     }
   ];
